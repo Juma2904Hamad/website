@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const projects = [
   {
     title: "Coral Reef Restoration",
-    desc: "",
+    desc: "Reviving damaged coral reefs sustainably.",
     details:
       "Our Coral Reef Restoration project focuses on reviving damaged coral reefs using sustainable methods, involving local communities and marine biologists to ensure long-term survival of reef ecosystems.",
     img: "/assets/img/pro1.jpeg",
@@ -14,7 +14,7 @@ const projects = [
   },
   {
     title: "Sustainable Fishing Initiative",
-    desc: "Implementing responsible fishing practices for local communities.",
+    desc: "Responsible fishing practices for local communities.",
     details:
       "We work with local fishermen to promote sustainable fishing practices, training them on eco-friendly nets, quotas, and monitoring fish stocks to protect marine biodiversity.",
     img: "/assets/img/pro2.jpg",
@@ -38,10 +38,10 @@ const projects = [
   },
 ];
 
+const categories = ["All", "Conservation", "Technology", "Cleanup"];
+
 const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } };
 const modalFade = { hidden: { opacity: 0 }, visible: { opacity: 1 }, exit: { opacity: 0 } };
-
-const categories = ["All", "Conservation", "Technology", "Cleanup"];
 
 const Project = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -53,20 +53,35 @@ const Project = () => {
       : projects.filter((p) => p.category === selectedCategory);
 
   return (
-    <section className="relative overflow-hidden bg-[#001F3F] text-white py-0 mt-0" id="projects">
+    <section
+      className="relative overflow-hidden bg-[#001F3F] text-white py-20"
+      id="projects"
+    >
       <div className="max-w-7xl mx-auto px-6">
-       
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" className="text-center mb-16">
-          <h2 className="text-5xl font-extrabold mb-6 bg-gradient-to-r from-[#00B4D8] via-[#005B96] to-[#FFD166] bg-clip-text text-transparent">
-            Our Projects
-          </h2>
+        {/* Header */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          className="text-center -mt-10 mb-12"
+        >
+      
+            <h3 className="text-3xl md:text-4xl font-extrabold mb-6 relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#00B4D8] via-[#0096c7] to-[#00FFA3]">
+                  Our Projects
+              <span className="absolute -bottom-2 left-1/2 w-20 h-1.5 md:w-28 bg-[#00B4D8] rounded-full -translate-x-1/2"></span>
+            </h3>
           <p className="text-white max-w-3xl mx-auto text-lg leading-relaxed">
             Explore our marine initiatives that promote sustainability, conservation, and innovative solutions for the ocean.
           </p>
         </motion.div>
 
-     
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" className="flex justify-center gap-6 mb-10 flex-wrap">
+        {/* Category Filters */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          className="flex justify-center gap-6 mb-10 flex-wrap"
+        >
           {categories.map((cat) => (
             <button
               key={cat}
@@ -82,7 +97,7 @@ const Project = () => {
           ))}
         </motion.div>
 
-      
+        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredProjects.map((project, i) => (
             <motion.div
@@ -109,11 +124,11 @@ const Project = () => {
         </div>
       </div>
 
-  
+      {/* Decorative Blurs */}
       <span className="absolute top-10 left-10 w-24 h-24 rounded-full bg-[#00B4D8]/20 blur-3xl animate-pulse -z-10"></span>
       <span className="absolute bottom-20 right-20 w-32 h-32 rounded-full bg-[#005B96]/20 blur-3xl animate-pulse delay-1000 -z-10"></span>
 
-     
+      {/* Modal */}
       <AnimatePresence>
         {activeProject !== null && (
           <motion.div

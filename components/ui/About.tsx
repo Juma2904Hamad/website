@@ -67,7 +67,7 @@ export default function About() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[#001F3F] text-white py-28">
+    <section className="relative overflow-hidden bg-[#001F3F] text-white mt-5">
 
       {/* Background Rays */}
       <div className="absolute inset-0 -z-20">
@@ -93,13 +93,19 @@ export default function About() {
 
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* HEADER */}
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" className="text-center mb-24">
-          <h2 className="text-5xl font-extrabold mb-6 bg-gradient-to-r from-[#00B4D8] via-[#005B96] to-[#FFD166] bg-clip-text text-transparent">
-            About Our Marine Solutions
-          </h2>
-          <p className="text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed">
-            Sustainable Fish Farming is a leading international research organization working to improve food security, nutrition, and livelihoods through aquatic food systems.
+     
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" className="text-center -mt-13 mb-12">
+          
+
+           <h3 className="text-2xl md:text-3xl font-extrabold mb-6 relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#00B4D8] via-[#0096c7] to-[#00FFA3]">
+              About Us
+              <span className="absolute -bottom-2 left-1/2 w-20 h-1.5 md:w-28 bg-[#00B4D8] rounded-full -translate-x-1/2"></span>
+            </h3>
+
+          <p className="text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed text-justify">
+          
+            Leading the way in sustainable aquaculture, we empower communities and innovate practices to ensure healthy, resilient,
+             and productive aquatic food systems worldwide.
           </p>
         </motion.div>
 
@@ -122,10 +128,16 @@ export default function About() {
         </div>
 
         {/* STRATEGY */}
-        <div className="grid lg:grid-cols-2 gap-20 items-center mb-32">
+        <div className="grid lg:grid-cols-2 gap-20 items-center -mt-10 mb-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" className="max-w-2xl">
-            <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-[#00B4D8]">Our Strategy</h3>
+
+            <h3 className="text-2xl md:text-3xl font-extrabold mb-6 relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#00B4D8] via-[#0096c7] to-[#00FFA3]">
+              Our Strategy
+              <span className="absolute -bottom-2 left-1/2 w-20 h-1.5 md:w-28 bg-[#00B4D8] rounded-full -translate-x-1/2"></span>
+            </h3>
+            
             <p className="text-slate-300 text-sm md:text-base leading-relaxed text-justify">
+
               <span className="font-semibold text-white">
                We provide holistic thinking and scientific evidence to transform aquatic food systems for healthy people and the planet.
                 </span>
@@ -137,11 +149,25 @@ export default function About() {
               <p>Equity is important locally, so that women, young people and other marginalized groups are not deprived of the opportunity to use aquatic foods to enhance their health, wellbeing and economic lives. Global equity is equally important, so that low- and middle-income countries are able to use aquatic foods to develop their economies and support their people.</p>
             </div>
 
-            <div className="mt-10">
-              <Link href="/strategy" className="group relative inline-flex items-center gap-3 px-8 py-3 rounded-full bg-gradient-to-r from-[#00B4D8] via-cyan-600 to-[#0096c7] text-white font-semibold shadow-lg hover:scale-105 transition">
-                <span className="flex items-center gap-2">Explore Strategy <RiArrowRightUpLine /></span>
+           <div className="mt-10">
+              <Link
+                href="/strategy"
+                className="group relative inline-flex items-center gap-3 px-7 py-3 rounded-full bg-gradient-to-r from-[#00B4D8] via-cyan-600 to-[#0096c7] text-white font-extrabold text-sm uppercase tracking-wide shadow-lg 
+                  transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/50 cursor-pointer overflow-hidden"
+              >
+                <span className="flex items-center gap-2 text-[13px]">
+                  Explore Strategy
+                  
+                  <span className="w-6 h-6 flex items-center justify-center rounded-full bg-white text-[#00B4D8] transition-all duration-300 
+                    group-hover:translate-x-1 group-hover:bg-[#00B4D8] group-hover:text-white">
+                    <RiArrowRightUpLine className="text-[17px] rotate-0 group-hover:rotate-45 transition-transform duration-300" />
+                  </span>
+                </span>
+
+                <span className="absolute inset-0 rounded-full bg-white/10 opacity-0 transition-all duration-300 group-hover:opacity-20"></span>
               </Link>
             </div>
+
           </motion.div>
 
           <motion.img src="/assets/img/img6.jpg"
@@ -149,28 +175,56 @@ export default function About() {
         </div>
 
      
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" className="text-center mb-28">
-          <h3 className="text-3xl font-bold mb-8 text-[#00B4D8]">Global Availability</h3>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" className="mx-auto opacity-70" />
+      <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          className="text-center -mt-1 mb-20 px-4 md:px-0"
+        >
+          {/* Title */}
+          <h3 className="text-2xl md:text-3xl font-extrabold mb-6 relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#00B4D8] via-[#0096c7] to-[#00FFA3]">
+            Global Availability
+            <span className="absolute -bottom-2 left-1/2 w-20 h-1.5 md:w-28 bg-[#00B4D8] rounded-full -translate-x-1/2"></span>
+          </h3>
+
+          {/* Description */}
+          <p className="text-slate-300 text-base md:text-lg leading-relaxed max-w-3xl mx-auto text-justify mt-3 mb-3">
+            Over the years, our aquatic projects have reached <span className="font-semibold text-white">communities across the globe</span>. 
+            From Asia to Africa, we collaborate with <span className="font-semibold text-white">local stakeholders</span> and <span className="font-semibold text-white">international organizations</span> to drive <span className="font-semibold bg-gradient-to-r from-[#00B4D8] via-[#0096c7] to-[#00FFA3] bg-clip-text text-transparent">sustainable development</span>, enhance <span className="font-semibold text-white">livelihoods</span>, and ensure <span className="font-semibold bg-gradient-to-r from-[#00B4D8] via-[#0096c7] to-[#00FFA3] bg-clip-text text-transparent">food security</span> worldwide. 
+            This map illustrates our <span className="font-semibold text-white">global presence</span> and impact.
+          </p>
+
+          {/* Map */}
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+            className="mx-auto mt-6 opacity-70 max-w-full"
+            alt="Global Availability Map"
+          />
+
         </motion.div>
 
-       {/* STATS SECTION */}
-<div className="max-w-7xl mx-auto px-6 mb-28">
 
-  {/* Intro Text */}
-  <motion.div
-    variants={fadeUp}
-    initial="hidden"
-    whileInView="visible"
-    className="mb-16 text-center max-w-3xl mx-auto"
-  >
-    <h3 className="text-3xl md:text-4xl font-bold text-[#00B4D8] mb-4">
-      Our Impact
-    </h3>
-    <p className="text-slate-300 text-base md:text-lg leading-relaxed text-justify">
-      Over the years, we have successfully delivered marine and aquatic projects across multiple countries, partnering with local communities and global organizations to promote sustainable development, improve livelihoods, and enhance food security. These numbers highlight our reach and commitment.
-    </p>
-  </motion.div>
+        <div className="max-w-7xl mx-auto px-6 mb-28">
+
+         <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          className="mb-20 text-center max-w-3xl mx-auto px-4 md:px-0"
+        >
+
+          <h3 className="text-3xl md:text-4xl font-extrabold mb-6 relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#00B4D8] via-[#0096c7] to-[#00FFA3]">
+            Our Impact
+            <span className="absolute -bottom-2 left-1/2 w-20 h-1.5 md:w-28 bg-[#00B4D8] rounded-full -translate-x-1/2"></span>
+          </h3>
+
+          {/* Paragraph with highlighted keywords */}
+          <p className="text-slate-300 text-base md:text-lg leading-relaxed text-justify">
+            Over the years, we have successfully delivered <span className="font-semibold text-white">marine and aquatic projects</span> across multiple countries, partnering with <span className="font-semibold text-white">local communities</span> and <span className="font-semibold text-white">global organizations</span> to promote <span className="font-semibold bg-gradient-to-r from-[#00B4D8] via-[#0096c7] to-[#00FFA3] bg-clip-text text-transparent">sustainable development</span>, improve <span className="font-semibold text-white">livelihoods</span>, and enhance <span className="font-semibold bg-gradient-to-r from-[#00B4D8] via-[#0096c7] to-[#00FFA3] bg-clip-text text-transparent">food security</span>. These numbers highlight our reach and commitment.
+          </p>
+
+        </motion.div>
+
 
         {/* Stats Cards */}
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 text-center">
@@ -202,32 +256,25 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-12 mb-28">
           <motion.form variants={fadeUp} initial="hidden" whileInView="visible" className="bg-white/5 p-10 rounded-3xl border border-[#00B4D8]/20 flex flex-col gap-6">
             <h3 className="text-3xl font-bold text-[#00B4D8]">Get in Touch</h3>
+            
             <input className="p-3 rounded-lg bg-white/10 border border-[#00B4D8]/30" placeholder="Your Name"/>
             <input className="p-3 rounded-lg bg-white/10 border border-[#00B4D8]/30" placeholder="Your Email"/>
             <textarea rows={5} className="p-3 rounded-lg bg-white/10 border border-[#00B4D8]/30" placeholder="Message"/>
-            <button className="bg-gradient-to-r from-[#00B4D8] via-[#005B96] to-[#FFD166] py-3 rounded-full font-bold text-black">Send Message</button>
+          <button className="bg-gradient-to-r from-[#00B4D8] via-[#0096c7] to-[#00FFA3] py-3 px-6 md:px-8 rounded-full font-extrabold text-white text-sm uppercase tracking-wide shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-[#00B4D8]/50">
+            Send Message
+          </button>
+
           </motion.form>
 
         <motion.div
-  variants={fadeUp}
-  initial="hidden"
-  whileInView="visible"
-  className="flex flex-col gap-4 bg-white/5 p-10 rounded-3xl border border-[#00B4D8]/20"
->
-  <h3 className="text-3xl font-bold text-[#00B4D8] mb-4">Contact Information</h3>
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          className="flex flex-col gap-4 bg-white/5 p-10 rounded-3xl border border-[#00B4D8]/20"
+        >
+       <h3 className="text-3xl font-bold text-[#00B4D8] mb-4">Contact Information</h3>
 
-                {/* Name */}
-          <div className="flex items-center gap-4 text-slate-200">
-            <User className="text-[#00B4D8]" /> 
-            <span className="font-semibold">Name:</span> Lameck Deomedes
-          </div>
-
-          {/* Status */}
-          <div className="flex items-center gap-4 text-slate-200">
-            <Briefcase className="text-[#00B4D8]" /> 
-            <span className="font-semibold">Status:</span> Managing Director
-          </div>
-
+          
           {/* Location */}
           <div className="flex items-center gap-4 text-slate-200">
             <MapPin className="text-[#00B4D8]" /> Bwinila, Morogoro
