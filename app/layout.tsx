@@ -1,34 +1,21 @@
 
-import {DM_Sans,Barlow} from "next/font/google";
-import './globals.css'; 
-import { Variable } from "lucide-react";
+import Header from "@/components/ui/Header";
+import "./globals.css";
+import Footer from "@/components/ui/Footer";
 
-
-const dmSans=DM_Sans({
-
-  variable:"--font-dmSans",
-
-  subsets:["latin"],
-
-  weight:["100","200","300","400","500","600","700","800","900"]
-
-});
-
-
-const barlow=Barlow({
-
-  variable:"--font-barlow",
-
-  subsets:["latin"],
-
-  weight:["100","200","300","400","500","600","700","800","900"]
-
-});
+export const metadata = {
+  title: "sufifa",
+  description: "Sustainable Fishing Farming",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${barlow.variable} antialiased`}>{children}</body>
+      <body>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

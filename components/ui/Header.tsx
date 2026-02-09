@@ -5,11 +5,13 @@ import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import { Link as ScrollLink } from "react-scroll";
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const links = [
-  { name: "home", path: "home" },
-  { name: "projects", path: "projects" },
-  { name: "company", path: "company" },
+  { name: "home", path: "/" },
+  { name: "projects", path: "/projects" },
+  { name: "company", path: "/company" },
 ];
 
 const Header = () => {
@@ -47,17 +49,12 @@ const Header = () => {
             <ul className="flex gap-10 text-white font-secondary">
               {links.map((link, index) => (
                 <li key={index} className="relative group text-sm uppercase tracking-wider text-[13px]">
-                  <ScrollLink
-                    to={link.path}
-                    smooth
-                    spy
-                    offset={-80}
-                    duration={500}
-                    activeClass="text-accent"
+                  <Link
+                    href={link.path}
                     className="cursor-pointer transition-colors hover:text-yellow-400"
                   >
                     {link.name}
-                  </ScrollLink>
+                  </Link>
                   <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
                 </li>
               ))}

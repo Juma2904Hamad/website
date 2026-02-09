@@ -14,7 +14,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-t from-[#003366] via-[#004c80] to-[#006699] text-white py-20">
+    <footer className="relative bg-gradient-to-t from-[#003366] via-[#004c80] to-[#006699] text-white py-5 -mt-30">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
 
         {/* About / Logo */}
