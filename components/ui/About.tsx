@@ -67,7 +67,7 @@ export default function About() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[#001F3F] text-white mt-5">
+    <section className="relative overflow-hidden bg-[#001F3F] text-white py-28">
 
       {/* Background Rays */}
       <div className="absolute inset-0 -z-20">
