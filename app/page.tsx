@@ -4,8 +4,6 @@ import Footer from "@/components/ui/Footer";
 import Header from "@/components/ui/Header";
 import Hero from "@/components/ui/hero";
 import Project from "@/components/ui/Project";
-import Stats from "@/components/ui/Stats";
-import Topbar from "@/components/ui/Topbar";
 
 
 const Home=()=>{
