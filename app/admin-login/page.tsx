@@ -22,7 +22,7 @@ export default function Login() {
 
     try {
 
-      const res = await fetch("http://127.0.0.1:8000/api/login", {
+       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
 
         method: "POST",
         headers: {
