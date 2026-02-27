@@ -4,69 +4,54 @@ import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+
 export default function Login() {
+
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
   const handleLogin = async (e: React.FormEvent) => {
+
     e.preventDefault();
     setError("");
-    setLoading(true);
 
     try {
-      const res = await fetch(
-        "https://sufifa-v1.infinityfreeapp.com/api/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        }
-      );
 
-      // Try parsing JSON safely
-      let data;
-      try {
-        data = await res.json();
-      } catch {
-        setError("Invalid server response");
-        setLoading(false);
-        return;
-      }
+       const res = await fetch('https://sufifa-v1.infinityfreeapp.com/login', {
+
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({ email, password }),
+
+      });
+
+      const data = await res.json();
 
       if (!res.ok) {
-        setError(data?.message || "Invalid email or password");
-        setLoading(false);
+        setError(data.message);
         return;
       }
 
-      // Save token locally
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-      }
+      localStorage.setItem("token", data.token);
 
-      // Optional: save user info
-      if (data.user) {
-        localStorage.setItem("user", JSON.stringify(data.user));
-      }
-
-      // Redirect to dashboard
       router.push("/admin-dashboard");
-    } catch (err) {
-      console.error("Login Error:", err);
-      setError(
-        "Network error. Check your internet, CORS, or API server."
-      );
-    } finally {
-      setLoading(false);
-    }
+
+      } 
+      
+      catch (err: any) {
+
+        setError("Network or server error");
+
+      }
+
   };
 
   return (
@@ -88,7 +73,6 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               required
-              disabled={loading}
             />
           </div>
 
@@ -101,35 +85,36 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               required
-              disabled={loading}
             />
+
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-3.5 text-gray-400"
-            >
+              className="absolute right-3 top-3.5 text-gray-400">
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
-          </div>
+
+           </div>
 
           <div className="flex justify-between items-center text-sm text-gray-300">
+
             <label className="flex items-center gap-2">
-              <input type="checkbox" className="accent-cyan-400" />
+              <input type="checkbox" className="accent-cyan-400"/>
               Remember me
             </label>
             <button type="button" className="text-cyan-400 hover:underline">
               Forgot password?
             </button>
+
           </div>
 
           <button
             type="submit"
-            disabled={loading}
             className="mt-4 bg-gradient-to-r from-cyan-500 to-teal-400 text-white font-bold py-3 
-            rounded-lg shadow-lg cursor-pointer hover:scale-105 transition-transform disabled:opacity-50"
-          >
-            {loading ? "Signing In..." : "Sign In"}
+             rounded-lg shadow-lg cursor-pointer hover:scale-105 transition-transform">
+            Sign In
           </button>
+
         </form>
       </div>
     </div>
