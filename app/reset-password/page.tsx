@@ -78,7 +78,8 @@ export default function Login() {
               />
             </div>
 
-           
+             
+
             <button
               type="submit"
               disabled={!isEmailValid || loading}
@@ -95,6 +96,17 @@ export default function Login() {
               )}
               {loading ? "Please wait..." : "Send Reset Link"}
             </button>
+
+            <div className="flex justify-center items-center text-sm text-white mt-2">
+            
+              <button
+                type="button"
+                className="text-white-500 hover:text-green-50 hover:underline cursor-pointer"
+                onClick={() => router.push("/admin-login")}
+              >
+                Login
+              </button>
+            </div>
 
              {error && <p className="text-red-500 text-sm text-center">{error}</p>}
           </form>
