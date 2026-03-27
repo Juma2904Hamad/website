@@ -1,38 +1,36 @@
 "use client";
 
-import { Eye, EyeOff, Mail, Lock } from "lucide-react";
+import {Mail} from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
   const router = useRouter();
 
-  const [showPassword, setShowPassword] = useState(false);
+ 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const isFilled = isEmailValid && password !== "";
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isFilled) return;
+    if (!isEmailValid) return;
 
     setError("");
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/login", {
+      const res = await fetch("http://127.0.0.1:8000/api/forgot-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email }),
       });
 
       const data = await res.json();
@@ -40,12 +38,6 @@ export default function Login() {
       if (!res.ok) {
         setError(data.message || "Invalid credentials");
         return;
-      }
-
-      if (rememberMe) {
-        localStorage.setItem("token", data.token);
-      } else {
-        sessionStorage.setItem("token", data.token);
       }
 
       router.push("/admin-dashboard");
@@ -69,11 +61,11 @@ export default function Login() {
 
         <div className="w-full md:w-1/2 p-10 flex flex-col justify-center">
           <h2 className="text-xl font-bold text-white text-center mb-5 -mt-7">
-            Admin Login
+            Reset Password
           </h2>
 
-          <form onSubmit={handleLogin} className="space-y-4">
-            {/* EMAIL */}
+          <form onSubmit={handleResetPassword} className="space-y-4">
+           
             <div className="relative mt-2">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
               <input
@@ -86,54 +78,14 @@ export default function Login() {
               />
             </div>
 
-            {/* PASSWORD */}
-            <div className="relative mt-2">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                className="w-full pl-10 pr-10 py-2 rounded-md text-sm bg-white shadow-lg focus:outline-none"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <div
-                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-              </div>
-            </div>
-
-          
-            <div className="flex justify-between items-center text-sm text-white mt-2">
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="text-white-500 cursor-pointer"
-                />
-                Remember Me
-              </label>
-
-              <button
-                type="button"
-                className="text-white-500 hover:text-green-50 hover:underline cursor-pointer"
-                onClick={() => router.push("/reset-password")}
-              >
-                Forgot Password?
-              </button>
-            </div>
-
-          
+           
             <button
               type="submit"
-              disabled={!isFilled || loading}
+              disabled={!isEmailValid || loading}
               className={`w-full flex items-center justify-center gap-2 py-2 rounded-full transition mt-4 text-sm ${
                 loading
                   ? "bg-green-500 text-white shadow-lg"
-                  : isFilled
+                  : isEmailValid
                   ? "bg-green-500 text-white hover:bg-green-600 shadow-lg cursor-pointer"
                   : "bg-green-300 text-white cursor-not-allowed shadow-lg"
               }`}
@@ -141,14 +93,10 @@ export default function Login() {
               {loading && (
                 <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin text-sm"></span>
               )}
-              {loading ? "Please wait..." : "Login"}
+              {loading ? "Please wait..." : "Send Reset Link"}
             </button>
 
-             {error && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-md shadow-sm text-center text-sm font-semibold">
-                {error}
-              </div>
-                    )}
+             {error && <p className="text-red-500 text-sm text-center">{error}</p>}
           </form>
         </div>
       </div>
